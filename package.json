@@ -1,0 +1,43 @@
+{
+  "name": "ecossistema-cv",
+  "version": "1.1.0",
+  "description": "Ecossistema de envio de currículos com RabbitMQ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "clean": "node -e \"const fs = require('fs'); const path = require('path'); const dir = 'uploads'; if (fs.existsSync(dir)) fs.readdirSync(dir).forEach(f => f !== '.gitkeep' && fs.unlinkSync(path.join(dir, f)))\"",
+    "pretest": "npm run clean",
+    "test": "NODE_ENV=test jest --runInBand",
+    "worker": "node worker-sender.js",
+    "logger": "node logger.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/origemglobaltecnologia/ecossistema-cv.git"
+  },
+  "keywords": [
+    "rabbitmq",
+    "nodejs",
+    "automation",
+    "cv-sender"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/origemglobaltecnologia/ecossistema-cv/issues"
+  },
+  "homepage": "https://github.com/origemglobaltecnologia/ecossistema-cv#readme",
+  "dependencies": {
+    "amqplib": "^0.10.9",
+    "body-parser": "^2.2.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.12"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  }
+}
